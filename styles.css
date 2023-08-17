@@ -1,0 +1,300 @@
+/* body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+#board {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background-color: #cdc1b5;
+  border: 2px solid #bbada0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+  grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+  grid-column-gap: var(--cell-size);
+}
+
+.cell {
+  background-color: #aaa;
+  border-radius: 1vmin;
+}
+
+.tile {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 5px solid #bbada0;
+  top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+/* For colored tiles */
+
+/* .x2 {
+  background-color: #eee4da;
+  color: #727371;
+}
+
+.x4 {
+  background-color: #ece0ca;
+  color: #727371;
+}
+
+.x8 {
+  background-color: #f4b17a;
+  color: white;
+}
+
+.x16 {
+  background-color: #f59575;
+  color: white;
+}
+
+.x32 {
+  background-color: #f57c5f;
+  color: white;
+}
+
+.x64 {
+  background-color: #f65d3b;
+  color: white;
+}
+
+.x128 {
+  background-color: #edce71;
+  color: white;
+}
+
+.x256 {
+  background-color: #edcc63;
+  color: white;
+}
+
+.x512 {
+  background-color: #edc651;
+  color: white;
+}
+
+.x1024 {
+  background-color: #eec744;
+  color: white;
+}
+
+.x2048 {
+  background-color: #ecc230;
+  color: white;
+}
+
+.x4096 {
+  background-color: #fe3d3d;
+  color: white;
+}
+
+.x8192 {
+  background-color: #ff2020;
+  color: white;
+} */
+*/ *,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-size: 7.5vmin;
+}
+
+/* .score-container {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-50%);
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.score-container h2 {
+  font-size: 30px;
+} */
+
+/* Styles for the score container */
+.score-container {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  text-align: center;
+}
+
+.score-container h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+hr {
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+/* Styles for the game board */
+#board {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+  grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+  background-color: #cdc1b5;
+  border: 6px solid #bbada0;
+  gap: var(--cell-gap);
+  border-radius: 1vmin;
+  padding: var(--cell-gap);
+  position: absolute;
+  top: calc(50% + 40px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hidden {
+  display: none;
+}
+
+.cell {
+  background-color: #aaa;
+  border-radius: 1vmin;
+}
+
+.tile {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background-color: red;
+  border-radius: 1vmin;
+  top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  font-weight: bold;
+  background-color: hsl(200, 50%, var(--background-lightness));
+  color: hsl(200, 25%, var(--text-lightness));
+  transition: 100ms ease-in-out;
+}
+
+/* Add appropriate styles for the game over message */
+#game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 8px;
+  display: none;
+}
+
+/* Add this to your existing CSS stylesheet */
+#restart-button {
+  /* background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block; */
+  font-size: 16px;
+  /* margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s; */
+}
+
+#restart-button:hover {
+  background-color: #45a049;
+}
+
+.x2 {
+  background-color: #eee4da;
+  color: #727371;
+}
+
+.x4 {
+  background-color: #ece0ca;
+  color: #727371;
+}
+
+.x8 {
+  background-color: #f4b17a;
+  color: white;
+}
+
+.x16 {
+  background-color: #f59575;
+  color: white;
+}
+
+.x32 {
+  background-color: #f57c5f;
+  color: white;
+}
+
+.x64 {
+  background-color: #f65d3b;
+  color: white;
+}
+
+.x128 {
+  background-color: #edce71;
+  color: white;
+}
+
+.x256 {
+  background-color: #edcc63;
+  color: white;
+}
+
+.x512 {
+  background-color: #edc651;
+  color: white;
+}
+
+.x1024 {
+  background-color: #eec744;
+  color: white;
+}
+
+.x2048 {
+  background-color: #ecc230;
+  color: white;
+}
+
+.x4096 {
+  background-color: #fe3d3d;
+  color: white;
+}
+
+.x8192 {
+  background-color: #ff2020;
+  color: white;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+}
